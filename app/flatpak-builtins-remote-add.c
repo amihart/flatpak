@@ -404,6 +404,10 @@ flatpak_builtin_remote_add (int argc, char **argv,
   if (opt_authenticator_name && !g_dbus_is_name (opt_authenticator_name))
     return flatpak_fail (error, _("Invalid authenticator name %s"), opt_authenticator_name);
 
+    /* Skip GPG key import entirely if GPG verification is disabled */
+  if (opt_no_gpg_verify)
+    g_clear_pointer (&gpg_data, g_bytes_unref);
+
   if (!flatpak_dir_modify_remote (dir, remote_name, config, gpg_data, cancellable, error))
     return FALSE;
 
