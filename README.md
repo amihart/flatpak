@@ -1,3 +1,7 @@
+# Purpose of Fork
+
+Flatpak 1.18.0 breaks the `--no-gpg-verify` flag, making it impossible to add remotes without GPG verification. It works on Flatpak 1.16.1, but not Flatpak 1.18.0. This fork simply patches the part of the code that breaks it.
+
 <p align="center">
   <img src="https://github.com/flatpak/flatpak/blob/main/flatpak.png?raw=true" alt="Flatpak icon"/>
 </p>
